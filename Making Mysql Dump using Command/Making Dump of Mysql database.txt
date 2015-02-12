@@ -1,0 +1,23 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\PRAVEENSINGH2500>cd ..
+
+C:\>cd wamp
+
+C:\wamp>cd bin
+
+C:\wamp\bin>cd mysql
+
+C:\wamp\bin\mysql>cd mysql5.5.20
+
+C:\wamp\bin\mysql\mysql5.5.20>cd bin
+
+C:\wamp\bin\mysql\mysql5.5.20\bin>mysql -u root -p demo < backup.sql
+The system cannot find the file specified.
+
+C:\wamp\bin\mysql\mysql5.5.20\bin>mysql -u root -p demo < c:backup.sql
+The system cannot find the file specified.
+
+C:\wamp\bin\mysql\mysql5.5.20\bin>mysqldump -u root -p db1 > backup.sql
+Enter password:

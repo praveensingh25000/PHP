@@ -1,0 +1,4 @@
+<a href="#" id="clights-dealer-cm-gotobid"
+   data-action="{{ternary "open" "create" hasBid}}"
+   {{#if hasBid}}data-projectid="{{projectId}}"{{/if}}
+   class="btn btn-primary clights_caps">{{ternary "Go to bid" "Start bid" hasBid}}</a>

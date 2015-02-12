@@ -1,0 +1,35 @@
+1. The wire on the lights was originally green and I asked you to change it to black.
+The client would like the wire to be completely transparent, so that you don't see a 
+wire at all. - Done
+
+2. They would like a fader function on the the darkening tool, so they can adjust the
+darkness on the photo. - Done
+
+3. They would like to be able to print out or email the complete screen to the client,
+which would include the photo and the price quote and company address. - PDF Generation being worked on
+
+4. They want their franchisees to be able to add their address and contact info. (See Attachment - display page.pdf) {Option to update Dealer settings using account settings}
+
+5. They have a hard copy paper proposal that they have been using to give bids to their customers. They follow a certain order to maximize their selling potential. In other words they always start with the lights on the roof, and so on. They want to add drop down menus for items instead of using open fields to type in. I've attached a few documents that have the order and
+the items they want to have as drop down menus to select from. (See Attachement - Backend file structure.xlsx and New Res Service Proposal)
+
+- Being done using the quote process
+
+6. In addition to going in a certain order, they also have franchisees who don't want the line item pricing to be shown to the customer, so they would like to add an option in the backend for the franchisees to turn on or off the three pricing options. (See Attachment ADMIN.pdf)
+
+- {Settings}
+
+7. They also need to add discount percentage calculations. The franchisee should be able to enter the percentage and the software will automatically compute that. (See Attachment ADMIN.pdf) - {Settings}
+
+8. I think they want to move the total price window down below the item listing, to maximize space. They want the photo to be as big as it can be.
+
+9. We need to add a "forgot password" function for the login - {Add Forgot password functionality}
+
+10. We need to add a "change password" for the dealer and the admin - {Add change password functionality}
+
+11. VERY IMPORTANT - They want a "calculate" button next to the
+total price, rather than the software automatically calculate when you
+turn off a layer. This has to do with how they sell the customer.
+I know its easier to have it recalculate automatically, but they would
+rather have a calculate button. Unless there is a way to have it as
+an option in the backend for the dealer to select auto calculate or not.

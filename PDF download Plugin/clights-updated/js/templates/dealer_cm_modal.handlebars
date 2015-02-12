@@ -1,0 +1,44 @@
+<div id="clights-dealer-cm-modal"
+     class="modal clights_pane clights_modal hide fade"
+     data-showing="{{type}}"
+     data-keyboard="false"
+     data-backdrop="static"
+     data-screen="{{layout}}">
+    <div class="modal-header">
+        <h3 class="clights_caps">
+            <img class="pull-left" src="img/logo_ttl-300.png" alt="Christmas Decor" width="300" height="90">
+            {{#if admin}}
+                <span class="badge badge-important pull-right">ADMIN</span>
+            {{else}}
+                <span class="badge badge-info pull-right">{{user.name}}</span>
+            {{/if}}
+        </h3>
+    </div>
+    <div class="modal-body clights_justify">
+        <div id="clights-dealer-cm-actions">
+            <button id="clights-new-cm"
+                    class="btn btn-primary clights_caps btn-block">New {{type}}</button>
+            <div class="btn-group" style="width: 100%;">
+                <button class="btn dropdown-toggle clights_caps btn-block"
+                   data-toggle="dropdown">Existing {{type}} <span class="caret"></span>
+                </button>
+                <ul id="clights-dealer-cm-dropdown"
+                    class="dropdown-menu"
+                    data-type="{{type}}" style="width: 100%;">
+                </ul>
+            </div>
+            <button id="clights-account-settings"
+                    class="btn clights_caps btn-block disabled">Account Settings</button>
+            <button id="clights-logout"
+                    class="btn btn-danger clights_caps btn-block">Logout</button>
+        </div>
+        <form class="form-horizontal" id="clights-dealer-cm-form"
+              data-itemtype="{{#if isNew}}new{{else}}{{type}}{{/if}}">
+        </form>
+        <div class="clights_justified_block clights_break"></div>
+    </div>
+    <div class="modal-footer clights_pane">
+        <a href="#" id="clights-dealer-cm-delete" class="btn btn-danger clights_caps">Delete</a>
+        <a href="#" id="clights-dealer-cm-save" class="btn btn-success clights_caps">Save</a>
+    </div>
+</div>

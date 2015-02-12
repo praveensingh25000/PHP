@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /clights-updated/api/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]

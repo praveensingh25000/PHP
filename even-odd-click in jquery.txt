@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div:nth-last-child(odd)
+{
+background:red;
+}
+div:nth-last-child(even)
+{
+background:yellow;
+}
+</style>
+</head>
+<body>
+
+<div>
+<div>The first paragraph.</div>
+<div>The second paragraph.</div>
+<div>The third paragraph.</div>
+<div>The third paragraph.</div>
+<div>The third paragraph.</div>
+<div>The third paragraph.</div>
+<div>The third paragraph.</div>
+</div>
+
+<p><b>Note:</b> Internet Explorer 8 and earlier versions do not support the :nth-last-child() selector.</p>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://localhost:3333/filtertest.html# -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link class="cssdeck" rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
+    <style type="text/css">
+        #canvas {
+            box-shadow: 0 0 10px 1px;
+        }
+        .canvas_container {
+            margin: 10px 0;
+            width: auto;
+            height: auto;
+            outline: 1px solid blue;
+            background-color: black;
+        }
+        .form-inline {
+            display: inline-block;
+        }
+        .form-inline + .form-inline {
+            margin-left: 20px;
+        }
+    </style>
+<style type="text/css"></style></head>
+<body>
+
+<div class="container">
+
+    <div class="canvas_container" style="width: 1024px; height: 640px;">
+        <canvas id="canvas" width="1024" height="640" style="width: 1024px; height: 640px;">
+            Your browser does not support HTML5 Canvas.
+        </canvas>
+    </div>
+
+    <form action="" class="form-inline">
+        <div class="input-append">
+            <input class="span2" id="width" type="text" value="1024">
+            <span class="add-on">width</span>
+        </div>
+        <div class="input-append">
+            <input class="span2" id="height" type="text" value="640">
+            <span class="add-on">height</span>
+        </div>
+        <button class="btn btn-inverse" id="resize">Resize</button>
+    </form>
+
+    <form action="" class="form-inline">
+        <div class="input-append">
+            <input class="span2" id="adjustment" type="number" min="-255" max="255" value="-30">
+            <span class="add-on">adjustment</span>
+        </div>
+        <button class="btn btn-inverse" id="day-for-night">Day For Night</button>
+    </form>
+
+    <form class="form-inline pull-right" action="">
+        <button id="clights-upload" class="btn btn-primary">Upload</button>
+    </form>
+
+</div>
+
+<script class="cssdeck" src="./filtertest_files/jquery.min.js"></script>
+<script class="cssdeck" src="./filtertest_files/underscore-min.js"></script>
+<script class="cssdeck" src="./filtertest_files/modernizr.min.js"></script>
+<script class="cssdeck" src="./filtertest_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/handlebars.runtime.js"></script>
+<script type="text/javascript" src="js/templates.js"></script>
+<script type="text/javascript">
+    var house,
+            imageSrc,
+            oFReader = new FileReader(),
+            rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+    oFReader.onload = function (oFREvent) {
+        imageSrc = oFREvent.target.result;
+        drawImage($('#width').val(), $('#height').val());
+    };
+
+    function loadImageFile() {
+        if (document.getElementById("bid-photo").files.length === 0) { return; }
+        var oFile = document.getElementById("bid-photo").files[0];
+        if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+        oFReader.readAsDataURL(oFile);
+    }
+    var Filters = {};
+
+    Filters.getPixels = function() {
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext('2d');
+        return ctx.getImageData(0, 0, c.width, c.height);
+    };
+
+    Filters.putPixels = function(imageData) {
+        var c = document.getElementById("canvas");
+        var ctx = c.getContext('2d');
+        return ctx.putImageData(imageData, 0, 0);
+    };
+
+    Filters.filterImage = function(filter, image, var_args) {
+        var args = [image];
+        for (var i=2; i<arguments.length; i++) {
+            args.push(arguments[i]);
+        }
+        return filter.apply(null, args);
+    };
+
+    Filters.grayscale = function(pixels, args) {
+        var d = pixels.data;
+        for (var i=0; i<d.length; i+=4) {
+            var r = d[i];
+            var g = d[i+1];
+            var b = d[i+2];
+            // CIE luminance for the RGB
+            // The human eye is bad at seeing red and blue, so we de-emphasize them.
+            var v = 0.2126*r + 0.7152*g + 0.0722*b;
+            d[i] = d[i+1] = d[i+2] = v
+        }
+        return pixels;
+    };
+
+    Filters.dayForNight = function(pixels, adjustment) {
+        //if (typeof adjustment == 'undefined') adjustment = -50;
+        var d = pixels.data;
+        var min = 0;
+        var max = 120;
+        for (var i=0; i<d.length; i+=4) {
+            var r = d[i];
+            var g = d[i+1];
+            var b = d[i+2];
+            // CIE luminance for the RGB
+            // The human eye is bad at seeing red and blue, so we de-emphasize them.
+            var v = 0.2126*r + 0.07152*g + 0.0722*b;
+            d[i]   = Math.max(min, v);
+            d[i+1] = Math.max(min, v);
+            d[i+2] = Math.max(min, ((0.7 * b) + v) / 2);
+            d[i]   = Math.min(max, d[i]);
+            d[i+1] = Math.min(max, d[i+1]);
+            d[i+2] = Math.min(max, d[i+2]);
+        }
+        return Filters.brightness(pixels, adjustment);
+    };
+
+    Filters.brightness = function(pixels, adjustment) {
+        var d = pixels.data;
+        for (var i=0; i<d.length; i+=4) {
+            d[i] += adjustment;
+            d[i+1] += adjustment;
+            d[i+2] += adjustment;
+        }
+        return pixels;
+    };
+
+    function getImageUrl () {
+        $(Handlebars.templates.upload_modal())
+                .appendTo('body')
+                .modal();
+    }
+
+    function drawImage (newWidth, newHeight) {
+        if (!Modernizr.canvas) {
+            return;
+        } else {
+            $('#canvas, .canvas_container').width(newWidth).height(newHeight);
+            var theCanvas = document.getElementById("canvas");
+            theCanvas.width = newWidth;
+            theCanvas.height = newHeight;
+            var context = theCanvas.getContext("2d");
+        }
+
+        house = new Image();
+        house.src = imageSrc || "img/house.jpg";
+        house.addEventListener('load', eventImageLoaded, false);
+
+        function eventImageLoaded () {
+            //var fitWidth = Math.max(newWidth,
+            context.drawImage(house, 0, 0, newWidth, newWidth * (house.height / house.width));
+            $(document).trigger('clights:imageLoaded')
+        }
+
+    }
+
+    $(document).ready(function () {
+        drawImage($('#width').val(), $('#height').val());
+
+        $('#resize').on('click', function(event) {
+            var w = $('#width').val(), h = $('#height').val();
+            drawImage(w, h);
+        });
+
+        $('#day-for-night').on('click', function (event) {
+            $(document).on('clights:imageLoaded', function() {
+                var pixels = Filters.getPixels();
+                var adjustment = parseInt($('#adjustment').val());
+                var newPixels = Filters.dayForNight(pixels, adjustment);
+                Filters.putPixels(newPixels);
+                $(this).off('clights:imageLoaded');
+            });
+            var w = $('#width').val(), h = $('#height').val();
+            drawImage(w, h);
+        });
+
+        $(document).on('click', '#clights-upload', function (event) {
+            getImageUrl();
+        });
+
+        $(document).on('click', '#clights-upload-bid-photo', function (event) {
+            event.preventDefault();
+            loadImageFile();
+            $('#clights-upload-modal').on('hidden', function() {
+                $(this).remove();
+            })
+                    .modal('hide');
+        });
+
+        $(document).on('submit', 'form', function (event) {
+            event.preventDefault();
+        });
+
+    });
+
+</script>

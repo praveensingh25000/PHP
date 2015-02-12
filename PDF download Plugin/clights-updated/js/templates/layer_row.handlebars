@@ -1,0 +1,53 @@
+<div id="layer_{{id}}"
+     data-layerid="{{id}}"
+     {{#if hasColor}}data-color="{{color}}"{{/if}}
+     class="row-fluid clights_tr{{#if isNew}} clights_add_new_row{{/if}}
+     {{#if active}} clights_selected{{/if}}">
+    <div class="clights_row_bg"></div>
+    <div class="clights_layer_chkbox span1 clights_td clights_row_checkbox">
+        <button class="btn btn-inverse">
+            <i class="icon-ok"></i>
+        </button>
+    </div>
+    <div class="clights_layer_name span3 clights_td" data-fieldname="itemName">
+        <span class="clights_click_to_add clights_caps">Add new item</span>
+        <div class="clights_display_field">{{name}}</div>
+        <div class="input-append">
+            <input class="span2" type="text" name="name" id="" value="{{name}}">
+            <button class="clights_save_field btn btn-success" type="button">Save</button>
+            <!--<button class="clights_cancel_field_edit btn btn-danger" type="button">Cancel</button>-->
+        </div>
+
+    </div>
+    <div class="clights_layer_desc span4 clights_td" data-fieldname="description">
+        <span class="clights_display_field">{{description}}</span>
+        <div class="input-append">
+            <input class="span2" type="text" name="description" id="" value="{{description}}">
+            <button class="clights_save_field btn btn-success" type="button">Save</button>
+        </div>
+    </div>
+    <div class="clights_layer_color span1 clights_td clights_colorpicker"
+         data-fieldname="color" data-color="{{color}}">
+        <div class="btn-group clights_colorpicker_dropdown">
+            <button class="btn btn-inverse clights_swatch {{color}}"></button>
+            <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu"></ul>
+        </div>
+    </div>
+    <div class="clights_layer_price span1 clights_td" data-fieldname="price">
+        <input type="number" name="price"
+               pattern="[0-9]+([\.|,][0-9]+)?" step="0.01"
+                title="This should be a number with up to 2 decimal places."
+                value="{{price}}">
+    </div>
+    <div class="clights_layer_buttons span1 clights_td clights_layer_actions">
+        <button class="btn btn-link clights_edit">
+            <i class="icon-pencil"></i>
+        </button>
+        <button class="btn btn-link clights_remove">
+            <i class="icon-remove"></i>
+        </button>
+    </div>
+</div>

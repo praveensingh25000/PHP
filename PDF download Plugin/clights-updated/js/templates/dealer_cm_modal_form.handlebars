@@ -1,0 +1,71 @@
+<div class="control-group">
+    <label class="control-label clights_caps" for="clights-cm-name">Name</label>
+
+    <div class="controls">
+        <input type="text" id="clights-cm-name" placeholder="Name"
+                name="name" {{#unless new}} value="{{item.name}}"{{/unless}}>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label clights_caps" for="clights-cm-address">Address</label>
+
+    <div class="controls">
+        <input type="text" id="clights-cm-address" placeholder="Address"
+               name="address_1" {{#unless new}} value="{{item.address_1}}"{{/unless}}>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label clights_caps" for="city">City</label>
+
+    <div class="controls">
+        <input type="text" id="city" placeholder="City"
+               name="city" {{#unless new}} value="{{item.city}}"{{/unless}}>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label clights_caps" for="state">State/ZIP</label>
+
+    <div class="controls controls-row">
+        <input class="span2" type="text" id="state" placeholder="State"
+               name="state" {{#unless new}} value="{{item.state}}"{{/unless}}>
+        <input class="span1"
+               type="{{#if isHandheld}}number{{else}}text{{/if}}"
+               id="ZIP" placeholder="ZIP"
+               name="zip" {{#unless new}} value="{{item.zip}}"{{/unless}}>
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label clights_caps" for="clights-cm-phone">Phone</label>
+
+    <div class="controls">
+        <input type="tel" id="clights-cm-phone" placeholder="Phone"
+               name="phone" {{#unless new}} value="{{item.phone}}"{{/unless}}>
+    </div>
+</div>
+{{#if admin}}
+    <div class="control-group">
+        <label class="control-label clights_caps" for="username">Username</label>
+
+        <div class="controls">
+            <input type="text" id="username" placeholder="Username"
+                   name="username" {{#unless new}} value="{{item.username}}"{{/unless}}>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label clights_caps" for="password">Password</label>
+
+        <div class="controls">
+            <input type="password" id="password" placeholder="Password"
+                   name="password" {{#unless new}} value="{{item.password}}"{{/unless}}>
+        </div>
+    </div>
+{{else}}
+    <div class="control-group">
+        <label class="control-label clights_caps" for="clights-cm-bid-date">Bid Date</label>
+
+        <div class="controls">
+            <input type="date" id="clights-cm-bid-date" placeholder="Bid Date"
+                   name="bid_date" {{#unless new}} value="{{dateInputVal item.bid_date}}"{{/unless}}>
+        </div>
+    </div>
+{{/if}}

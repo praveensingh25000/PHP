@@ -1,0 +1,13 @@
+<ul id="clights-dealer-cm-dropdown" class="dropdown-menu" data-type="{{type}}" style="width: 100%;">
+    {{#if hasItems}}
+        {{#each items}}
+            <li data-itemid="{{id}}">
+                <a href="#" data-tag="clights_dropdown_item_link">{{name}}</a>
+            </li>
+        {{/each}}
+    {{else}}
+        <li>
+            <a href="#" class="btn btn-link disabled">No {{type}}s</a>
+        </li>
+    {{/if}}
+</ul>

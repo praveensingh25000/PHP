@@ -1,0 +1,9 @@
+<a href="#" id="clights-dealer-cm-gotoquote" 
+	data-action="{{ternary "open" "create" hasBid}}"
+   {{#if hasBid}}data-projectid="{{projectId}}"{{/if}}
+class="btn btn-primary clights_caps">Build Quote</a>
+<a href="#" id="clights-dealer-cm-gotobid"
+   data-action="{{ternary "open" "create" hasBid}}"
+   {{#if hasBid}}data-projectid="{{projectId}}"{{/if}}
+   style="display:{{ternary "" "none" hasBid}}"
+   class="btn btn-primary clights_caps">{{ternary "Design" "Start Design" hasBid}}</a>

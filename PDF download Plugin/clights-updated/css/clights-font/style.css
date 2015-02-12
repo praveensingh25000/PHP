@@ -1,0 +1,174 @@
+@font-face {
+	font-family: 'fontawesome';
+	src:url('fonts/fontawesome.eot');
+	src:url('fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+		url('fonts/fontawesome.woff') format('woff'),
+		url('fonts/fontawesome.ttf') format('truetype'),
+		url('fonts/fontawesome.svg#fontawesome') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'fontawesome';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-eye-open, .icon-eye-close, .icon-pencil, .icon-plus, .icon-minus, .icon-exclamation-sign, .icon-magic, .icon-mobile, .icon-tablet, .icon-laptop, .icon-desktop, .icon-double-angle-up, .icon-double-angle-down, .icon-angle-left, .icon-angle-right, .icon-angle-up, .icon-angle-down, .icon-lightbulb, .icon-cloud-upload, .icon-cloud-download, .icon-wrench, .icon-trash, .icon-home, .icon-cog, .icon-camera, .icon-ok, .icon-remove, .icon-zoom-in, .icon-zoom-out, .icon-camera-retro, .icon-key, .icon-upload-alt, .icon-money, .icon-envelope-alt, .icon-reorder, .icon-certificate, .icon-warning-sign, .icon-user, .icon-file, .icon-straight-lights, .icon-resize-full, .icon-curve-lights, .icon-details, .icon-bow, .icon-wreath {
+	font-family: 'fontawesome';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-eye-open:before {
+	content: "\f06e";
+}
+.icon-eye-close:before {
+	content: "\f070";
+}
+.icon-pencil:before {
+	content: "\f040";
+}
+.icon-plus:before {
+	content: "\f067";
+}
+.icon-minus:before {
+	content: "\f068";
+}
+.icon-exclamation-sign:before {
+	content: "\f06a";
+}
+.icon-magic:before {
+	content: "\f0d0";
+}
+.icon-mobile:before {
+	content: "\f10b";
+}
+.icon-tablet:before {
+	content: "\f10a";
+}
+.icon-laptop:before {
+	content: "\f109";
+}
+.icon-desktop:before {
+	content: "\f108";
+}
+.icon-double-angle-up:before {
+	content: "\f102";
+}
+.icon-double-angle-down:before {
+	content: "\f103";
+}
+.icon-angle-left:before {
+	content: "\f104";
+}
+.icon-angle-right:before {
+	content: "\f105";
+}
+.icon-angle-up:before {
+	content: "\f106";
+}
+.icon-angle-down:before {
+	content: "\f107";
+}
+.icon-lightbulb:before {
+	content: "\f0eb";
+}
+.icon-cloud-upload:before {
+	content: "\f0ee";
+}
+.icon-cloud-download:before {
+	content: "\f0ed";
+}
+.icon-wrench:before {
+	content: "\f0ad";
+}
+.icon-trash:before {
+	content: "\f014";
+}
+.icon-home:before {
+	content: "\f015";
+}
+.icon-cog:before {
+	content: "\f013";
+}
+.icon-camera:before {
+	content: "\f030";
+}
+.icon-ok:before {
+	content: "\f00c";
+}
+.icon-remove:before {
+	content: "\f00d";
+}
+.icon-zoom-in:before {
+	content: "\f00e";
+}
+.icon-zoom-out:before {
+	content: "\f010";
+}
+.icon-camera-retro:before {
+	content: "\f083";
+}
+.icon-key:before {
+	content: "\f084";
+}
+.icon-upload-alt:before {
+	content: "\f093";
+}
+.icon-money:before {
+	content: "\f0d6";
+}
+.icon-envelope-alt:before {
+	content: "\f0e0";
+}
+.icon-reorder:before {
+	content: "\f0c9";
+}
+.icon-certificate:before {
+	content: "\f0a3";
+}
+.icon-warning-sign:before {
+	content: "\f071";
+}
+.icon-user:before {
+	content: "\f007";
+}
+.icon-file:before {
+	content: "\f016";
+}
+.icon-straight-lights:before {
+	content: "\e000";
+}
+.icon-resize-full:before {
+	content: "\f065";
+}
+.icon-curve-lights:before {
+	content: "\e001";
+}
+.icon-details:before {
+	content: "\e003";
+}
+.icon-bow:before {
+	content: "\e004";
+}
+.icon-wreath:before {
+	content: "\e002";
+}

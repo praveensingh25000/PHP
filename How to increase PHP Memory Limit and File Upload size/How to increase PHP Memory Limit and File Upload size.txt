@@ -1,0 +1,31 @@
+How to increase PHP Memory Limit and File Upload size
+
+Increasing PHP Memory Limit and File Upload size
+
+For WAMP
+
+While importing a large database in PHP MyAdmin, or any other MySQL interface,we face server time out or maybe the file upload size is limited to say 2 MB or so. All you need to do is, you have to edit you php.ini file to increase the PHP memory limit and the file upload size. If you are using WAMP the follow the steps:
+
+
+Go to php.ini  using GUI
+
+Or
+
+C:\wamp\bin\apache\apache2.2.8\bin\php.ini (go to the respective directory if WAMP is installed in a different location)
+
+
+Find below configuration
+
+    post_max_size = 8M
+    upload_max_filesize = 2M
+    max_execution_time = 30
+    max_input_time = 60
+    memory_limit = 8M
+
+Modify to:
+
+    post_max_size = 750M
+    upload_max_filesize = 750M
+    max_execution_time = 5000
+    max_input_time = 5000
+    memory_limit = 1000M

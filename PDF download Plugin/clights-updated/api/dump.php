@@ -1,0 +1,2 @@
+<!-- <div style="width:10%;float:left;margn-right:10px;"><input type="text" style="width:60px"  value="<?php if(isset($inputs[1]['facia']['front']['mapcode'])){ echo $inputs[1]['facia']['front']['mapcode']; } ?>" name="inputs[1][facia][front][mapcode]"></div>
+						<div style="width:8%;float:left;margn-right:10px;"><input type="text" style="width:60px"  value="<?php if(isset($inputs[1]['facia']['front']['color'])){ echo $inputs[1]['facia']['front']['color']; } ?>" name="inputs[1][facia][front][color]"></div>-->
